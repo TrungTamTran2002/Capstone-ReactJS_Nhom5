@@ -1,10 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Header = () => {
   // lấy user từ redux
   const { user } = useSelector((state) => state.userSlice);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // đưa user về login
+    navigate("/login");
+    // reload trang => mất dâta
+    window.location.href = "/login";
+    // xóa user trong localStorage
+    localStorage.removeItem("user");
+  };
 
   return (
     <div>
@@ -23,17 +34,31 @@ const Header = () => {
               REACT JS
             </span>
           </Link>
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <h2 className=" text-green-700 text-lg font-black">{user.hoTen}</h2>
 
-            <Link to="/login">
-              <button
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Đăng Nhập
-              </button>
-            </Link>
+          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse">
+              <h2 className=" text-green-700 text-lg font-black">
+                {/* //optinal traning */}
+                {user?.hoTen}
+              </h2>
+              {user && (
+                <button
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                  className="text-red-500 text-lg font-black cursor-pointer hover:text-red-700 transition duration-200 ease-in-out"
+                >
+                  Đăng Xuất
+                </button>
+              )}
+              {!user && (
+                <Link to="/login">
+                  <span className="text-red-500 text-lg font-black hover:text-red-700 transition duration-200 ease-in-out">
+                    Đăng Nhập
+                  </span>
+                </Link>
+              )}
+            </div>
 
             <button
               data-collapse-toggle="navbar-sticky"

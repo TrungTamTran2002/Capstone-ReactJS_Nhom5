@@ -27,6 +27,9 @@ const LoginPage = () => {
             fontSize: "16px",
           },
         });
+        // dung lôcalStorage để lưu thông tin user tránh mất data khi load lại trang
+        const userJson = JSON.stringify(user);
+        localStorage.setItem("user", userJson);
       })
       .catch((err) => {
         console.log("err:", err);

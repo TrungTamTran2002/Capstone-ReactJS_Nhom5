@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Header from "./component/Header/Header";
 import { Toaster } from "react-hot-toast";
+import RegisterPage from "./pages/LoginPage/RegisterPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
         {/* Trang không có Header */}
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );
