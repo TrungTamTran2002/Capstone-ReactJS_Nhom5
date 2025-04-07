@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Header from "./component/Header/Header";
 import { Toaster } from "react-hot-toast";
 import RegisterPage from "./pages/LoginPage/RegisterPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Footer from "./component/Footer/Footer";
 
 function App() {
   return (
@@ -21,8 +23,17 @@ function App() {
         />
 
         {/* Trang không có Header */}
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/login"
+          element={
+            <WithHeader>
+              <LoginPage />
+            </WithHeader>
+          }
+        />
         <Route path="/register" element={<RegisterPage />} />
+        {/* Tạo route khi mà user nhập sai đường dẫn */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
@@ -30,11 +41,12 @@ function App() {
 
 // Component Layout chứa Header
 const WithHeader = ({ children }) => (
-  <>
+  <div className="min-h-screen flex flex-col">
     <Toaster />
     <Header />
-    {children}
-  </>
+    <main className="flex-grow flex flex-col">{children}</main>
+    <Footer />
+  </div>
 );
 
 export default App;
