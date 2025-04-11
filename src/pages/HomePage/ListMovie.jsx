@@ -55,7 +55,9 @@ const ListMovie = () => {
   return (
     <div>
       <h1 className="text-3xl text-center font-bold mt-10">Danh Sách Phim</h1>
-      <div className="grid grid-cols-6 gap-5 mt-10">{renderListMovie()}</div>
+      <div className="container grid grid-cols-6 gap-5 mt-10">
+        {renderListMovie()}
+      </div>
     </div>
   );
 };

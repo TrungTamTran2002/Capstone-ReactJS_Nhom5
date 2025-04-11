@@ -31,7 +31,7 @@ const LoginPage = () => {
 
   return (
     <section className="flex flex-col flex-1 bg-[url('https://demo1.cybersoft.edu.vn/static/media/backapp.b46ef3a1.jpg')] bg-cover bg-no-repeat">
-      <div className="flex flex-1 items-center justify-center py-10">
+      <div className="flex flex-1 items-center justify-center py-9">
         <div className="bg-white/90 p-6 rounded-lg shadow-lg w-full max-w-md">
           <Form
             layout="vertical"
