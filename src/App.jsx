@@ -8,6 +8,7 @@ import RegisterPage from "./pages/LoginPage/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Footer from "./component/Footer/Footer";
 import Loading from "./component/Loading/Loading";
+import DetailMoiePage from "./pages/DetailMoviePage/DetailMoiePage";
 
 function App() {
   return (
@@ -25,7 +26,6 @@ function App() {
             }
           />
 
-          {/* Trang không có Header */}
           <Route
             path="/login"
             element={
@@ -34,6 +34,16 @@ function App() {
               </WithHeader>
             }
           />
+          <Route
+            path="/detail/:id"
+            element={
+              <WithHeader>
+                <DetailMoiePage />
+              </WithHeader>
+            }
+          />
+          {/* Trang không có Header */}
+
           <Route path="/register" element={<RegisterPage />} />
           {/* Tạo route khi mà user nhập sai đường dẫn */}
           <Route path="*" element={<NotFoundPage />} />

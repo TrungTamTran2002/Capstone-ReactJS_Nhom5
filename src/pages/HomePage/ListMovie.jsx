@@ -9,16 +9,18 @@ const ListMovie = () => {
   let [listMovie, setListMovie] = useState([]);
 
   useEffect(() => {
+    // gọi api lấy danh sách phim
     getListMovieService()
       .then((res) => {
-        console.log(res.data);
-        // update state listMovie
+        // set danh sách phim
         setListMovie(res.data.content);
       })
       .catch((err) => {
+        // thông báo lỗi
+        alert("Có lỗi xảy ra, vui lòng thử lại sau!");
         console.log(err);
       });
-  }, []);
+  }, []); // [] chỉ chạy 1 lần khi component mount
   // gọi api lấy danh sách phim
 
   const renderListMovie = () => {
@@ -44,7 +46,11 @@ const ListMovie = () => {
           }
         >
           <Meta title={movie.tenPhim} description={desc} />
-          <Link type="primary" className="mt-3 !text-red-500 ">
+          <Link
+            to={`/detail/${movie.maPhim}`}
+            type="primary"
+            className="mt-3 !text-red-500 "
+          >
             Xem ngay
           </Link>
         </Card>

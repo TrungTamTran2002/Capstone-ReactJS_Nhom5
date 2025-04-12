@@ -4,10 +4,12 @@ import App from "./App.jsx";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./redux/userSlice.js";
+import loadingSlice from "./redux/loadingSlice.js";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     userSlice: userSlice,
+    loadingSlice: loadingSlice,
   },
 });
 
