@@ -58,7 +58,7 @@ const WithHeader = ({ children }) => (
   <div className=" min-h-screen flex flex-col">
     <Toaster />
     <Header />
-    <div className="flex-grow flex flex-col mt-10 ">{children}</div>
+    <div className="flex-grow flex flex-col pt-16 ">{children}</div>
     <Footer />
   </div>
 );

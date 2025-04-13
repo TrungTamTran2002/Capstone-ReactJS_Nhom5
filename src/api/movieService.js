@@ -15,6 +15,5 @@ export const getListMovieService = () => {
 }
 
 export const getDetailMovieService = (id) => {
-
     return https.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${id}`)
 }

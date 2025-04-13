@@ -1,0 +1,113 @@
+/* Khối chứa select với hiệu ứng line đỏ */
+.custom-select-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+/* Giao diện của dropdown */
+.custom-select {
+  appearance: none;
+  background: transparent;
+  width: 100%;
+  padding: 8px 30px 8px 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  color: #555;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hiệu ứng line đỏ khi focus */
+.custom-select-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ff3d00;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Khi focus vào select */
+.custom-select-wrapper:focus-within::after {
+  width: 100%;
+}
+
+/* Mũi tên dropdown */
+.custom-select-wrapper::before {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: gray;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Nền mờ khi hiện popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Hộp thông báo popup */
+.popup-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Tiêu đề popup */
+.popup-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Nội dung popup */
+.popup-box p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Nút Đã hiểu */
+.btn-confirm {
+  background-color: #f44336;
+  color: white;
+  font-weight: bold;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-confirm:hover {
+  background-color: #d32f2f;
+}
+
+/* Hiệu ứng hiện popup */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
