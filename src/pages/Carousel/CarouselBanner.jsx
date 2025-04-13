@@ -1,33 +1,32 @@
+import React, { useEffect, useState } from "react";
 import { Carousel } from "antd";
-import React from "react";
-import { Button, Select } from "antd";
+import { getCarousel } from "../../api/carouselService";
 
 export default function CarouselBanner() {
-  const { Option } = Select;
+  const [bannerList, setBannerList] = useState([]);
 
-  const contentStyle = {
-    height: "160px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-  };
+  useEffect(() => {
+    getCarousel()
+      .then((res) => {
+        setBannerList(res.data.content);
+      })
+      .catch((err) => {
+        console.error("Lỗi lấy banner:", err);
+      });
+  }, []);
 
   return (
-    <div className="container mx-auto">
-      <Carousel autoplay={{ dotDuration: true }} autoplaySpeed={5000}>
-        <div>
-          <h3 style={contentStyle}>1</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>2</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>3</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>4</h3>
-        </div>
+    <div className="container">
+      <Carousel autoplay={{ dotDuration: true }} autoplaySpeed={3000}>
+        {bannerList.map((banner, index) => (
+          <div key={index}>
+            <img
+              src={banner.hinhAnh}
+              alt={banner.maBanner}
+              className="w-full h-[100%] object-cover"
+            />
+          </div>
+        ))}
       </Carousel>
     </div>
   );
