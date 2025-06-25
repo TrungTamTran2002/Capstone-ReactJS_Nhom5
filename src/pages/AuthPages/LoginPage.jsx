@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { loginService } from "../../api/userServices";
 import { useDispatch } from "react-redux";
 import { setUserAction } from "../../redux/userSlice";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
@@ -16,8 +16,10 @@ const LoginPage = () => {
         const userData = res.data.content;
         dispatch(setUserAction(userData));
         localStorage.setItem("user", JSON.stringify(userData));
-        navigate("/");
         toast.success("Đăng Nhập Thành Công", { duration: 2000 });
+
+        // Thay thế window.location.href bằng navigate
+        navigate("/"); // Sử dụng navigate thay vì window.location
       })
       .catch((err) => {
         console.log("Đăng nhập thất bại:", err);
@@ -89,9 +91,9 @@ const LoginPage = () => {
 
             <div className="text-sm text-center text-gray-500">
               Not registered?{" "}
-              <a href="#" className="text-blue-600 hover:underline">
+              <Link to="/register" className="text-blue-600 hover:underline">
                 Create account
-              </a>
+              </Link>
             </div>
           </Form>
         </div>
