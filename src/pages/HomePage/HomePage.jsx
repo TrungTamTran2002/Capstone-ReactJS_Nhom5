@@ -1,7 +1,7 @@
 import React from "react";
 import ListMovie from "./ListMovie";
-import CarouselBanner from "../Carousel/CarouselBanner";
-import BookingForm from "../BookingForm/BookingForm";
+import CarouselBanner from "../../component/Carousel/CarouselBanner";
+import BookingForm from "../../component/BookingForm/BookingForm";
 import AppIntro from "../../component/AppIntro/AppIntro";
 
 const HomePage = () => {

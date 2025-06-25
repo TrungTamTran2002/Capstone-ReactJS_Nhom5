@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { getDetailMovieService } from "../../api/movieService";
 import { Progress } from "antd";
 
-const DetailMoiePage = () => {
+const DetailMoviePage = () => {
   let params = useParams();
   console.log("params", params);
 
@@ -48,4 +48,4 @@ const DetailMoiePage = () => {
   );
 };
 
-export default DetailMoiePage;
+export default DetailMoviePage;
